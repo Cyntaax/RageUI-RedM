@@ -19,7 +19,7 @@ end
 ---@return table
 ---@public
 function RageUI.GetSafeZoneBounds()
-    local SafeSize = GetSafeZoneSize()
+    local SafeSize = 0 -- TODO TO FIX
     SafeSize = math.round(SafeSize, 2)
     SafeSize = (SafeSize * 100) - 90
     SafeSize = 10 - SafeSize

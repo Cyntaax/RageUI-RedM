@@ -34,7 +34,7 @@ function RageUI.CreateMenu(Title, Subtitle, X, Y, TextureDictionary, TextureName
     Menu.Open = false
     Menu.Controls = RageUI.Settings.Controls
     Menu.Index = 1
-    Menu.Sprite = { Dictionary = TextureDictionary or "commonmenu", Texture = TextureName or "interaction_bgd", Color = { R = R, G = G, B = B, A = A } }
+    Menu.Sprite = { Dictionary = TextureDictionary or "menu_textures", Texture = TextureName or "translate_bg_1a", Color = { R = R, G = G, B = B, A = A } }
     Menu.Rectangle = nil
     Menu.Pagination = { Minimum = 1, Maximum = 10, Total = 10 }
     Menu.Safezone = true
@@ -284,7 +284,7 @@ end
 ---@return nil
 ---@public
 function RageUI.Menus:SetSpriteBanner(TextureDictionary, Texture)
-    self.Sprite = { Dictionary = TextureDictionary or "commonmenu", Texture = Texture or "interaction_bgd" }
+    self.Sprite = { Dictionary = TextureDictionary or "menu_textures", Texture = Texture or "translate_bg_1a" }
     self.Rectangle = nil
 end
 

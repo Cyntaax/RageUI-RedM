@@ -4,8 +4,6 @@
 --- DateTime: 20/12/2019 19:07
 ---
 
-print("^1RageUI-RedM Edition^0")
-
 RMenu.Add('showcase', 'main', RageUI.CreateMenu("RageUI", "Undefined for using SetSubtitle"))
 RMenu:Get('showcase', 'main'):SetSubtitle("~b~RAGEUI SHOWCASE")
 RMenu:Get('showcase', 'main').EnableMouse = true
@@ -61,90 +59,20 @@ local HeritageShape = {
 ---@type string
 local description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
-RageUI.CreateWhile(1.0, RMenu:Get('showcase', 'main'), 51, function()
+RageUI.CreateWhile(1.0, RMenu:Get('showcase', 'main'), 0xDFF812F9, function()
 
     RageUI.IsVisible(RMenu:Get('showcase', 'main'), true, true, true, function()
         --- Items
-        RageUI.Checkbox("Add ketchup ?", "Do you wish to add ketchup ?", index.ketchup, { Style = RageUI.CheckboxStyle.Tick }, function(Hovered, Selected, Active, Checked)
-            if (Selected) then
-                RageUI.Text({
-                    message = string.format("~r~Ketchup status: ~b~%s", tostring(index.ketchup))
-                })
-            end
-            index.ketchup = Checked;
-        end, function()
-            print('Checked')
-        end, function()
-            print('Unchecked')
-        end)
+        for i = 1, 100 do
+            RageUI.ButtonWithStyle("Cook ! - " .. i, "Cook the dish with the appropriate ingredients and ketchup.", { RightBadge = RageUI.BadgeStyle.Tick }, true, function(Hovered, Active, Selected)
+                if (Selected) then
 
-        RageUI.List("Style", rageui_style, index.dish, "Select the type UI Size and the audio library you want to use \n You also can use NUMPAD+ and NUMPAD- to change menu size", {}, true, function(Hovered, Active, Selected, Index)
-            index.dish = Index;
-        end, function(Index, CurrentItems)
-            --print(Index, CurrentItems)
-            RageUI.SetStyleAudio(CurrentItems)
-        end, {
-            RMenu:Get('showcase', 'submenu'),
-            RMenu:Get('submenu', 'badges'),
-        })
-
-        RageUI.List("Cursor", rageui_cursor, index.cursor, "Select the type cursor style.", {}, true, function(Hovered, Active, Selected, Index)
-            index.cursor = Index;
-        end, function(Index, CurrentItems)
-            print(Index, CurrentItems)
-            RMenu:Get('showcase', 'main'):SetCursorStyle(rageui_cursor[Index].Value)
-        end)
-
-        RageUI.Slider("Quantity", index.quantity, 10, "Select the amount of food you want to eat.", false, { }, true, function(Hovered, Selected, Active, Index)
-            if (Selected) then
-                RageUI.Text({
-                    message = string.format("Preparing ~r~%s ~b~%s(s)~w~...", index.quantity, "TEXT")
-                })
-            end
-            index.quantity = Index;
-        end)
-
-        RageUI.ButtonWithStyle("Cook !", "Cook the dish with the appropriate ingredients and ketchup.", { RightBadge = RageUI.BadgeStyle.Tick }, true, function(Hovered, Active, Selected)
-            if (Selected) then
-                local string = string.format("You have ordered ~r~%s ~b~%s(s)~w~ ~r~with~w~ ketchup.", index.quantity, "foods[index.dish]")
-                if not (index.ketchup) then
-                    string = string.format("You have ordered ~r~%s ~b~%s(s)~w~ ~r~without~w~ ketchup.", index.quantity, "foods[index.dish]")
                 end
-                RageUI.Text({
-                    message = string;
-                })
-            end
-        end)
-
-
-        RageUI.ButtonWithStyle("Another Menu", description, { RightLabel = "→→→" }, true, function(Hovered, Active, Selected)
-            if (Selected) then
-
-            end
-        end, RMenu:Get('showcase', 'submenu'))
-
-        RageUI.Button("RageUI.BadgeStyle", description, true, function()
-        end, RMenu:Get('submenu', 'badges'))
-
-        RageUI.UISliderHeritage("Resemblance", HeritageShape.i, "Determine which parent you care most about.", function(Hovered, Selected, Active, Heritage, Index)
-            if (Selected) then
-                if (HeritageShape.h ~= Heritage) then
-                    HeritageShape.h = Heritage
-                    HeritageShape.i = Index
-                end
-            end
-        end, 0.01) -- Default 0.1 / Can be nil
+            end)
+        end
 
     end, function()
         ---Panels
-        RageUI.PercentagePanel(index.panel.percentage, "Menu Size", nil, nil, function(Hovered, Active, Percent)
-            if (Active) then
-                for k, v in pairs(RMenu:GetType('showcase')) do
-                    RMenu:GetType('showcase')[k].Menu:SetStyleSize(Percent * 100)
-                end
-            end
-            index.panel.percentage = Percent
-        end, 2)
     end)
 
     RageUI.IsVisible(RMenu:Get('showcase', 'submenu'), false, false, true, function()
@@ -158,47 +86,6 @@ RageUI.CreateWhile(1.0, RMenu:Get('showcase', 'main'), 51, function()
         end
     end, function()
         ---Panels
-        RageUI.GridPanelHorizontal(0.5, "Ouverts", "Plissés", function(Hovered, Active, X)
-            -- TODO Implemented working
-        end, 1)
-
-        RageUI.GridPanel(0.5, 0.5, "Haut", "Bas", "Intérieur", "Extérieur", function(Hovered, Active, X, Y)
-            -- TODO Implemented working
-        end, 2)
-
-        RageUI.GridPanelVertical(0.5, "Ouverts", "Plissés", function(Hovered, Active, Y)
-            -- TODO Implemented working
-        end, 4)
-
-        RageUI.ColourPanel("Couleur principale", RageUI.PanelColour.HairCut, index.colored[1], index.colored[2] + 1, function(Hovered, Active, MinimumIndex, CurrentIndex)
-            -- TODO Implemented working
-            if (Active) then
-                index.colored[2] = CurrentIndex - 1
-                index.colored[1] = MinimumIndex
-            end
-        end, 5)
-
-        RageUI.PercentagePanel(index.panel.percentage, "Percentage", nil, nil, function(Hovered, Active, Percent)
-            if (Active) then
-
-            end
-            index.panel.percentage = Percent
-        end, 7)
-
-        RageUI.StatisticPanel(0.9, "Weapon MK2", 7)
-        RageUI.StatisticPanel(0.6, "Weapon", 7)
-        RageUI.StatisticPanelAdvanced("Advanced Panel", 0.6, nil, 0.1, nil, nil, 7)
-
-        RageUI.BoutonPanel("Left text", "Right Text", 8)
-    end)
-
-    RageUI.IsVisible(RMenu:Get('submenu', 'badges'), true, true, true, function()
-        --- Items
-        for BadgeName, Badge in pairs(RageUI.BadgeStyle) do
-            RageUI.ButtonWithStyle(string.format("RageUI.BadgeStyle.%s", BadgeName), nil, { RightBadge = Badge, LeftBadge = Badge }, true, function(Hovered, Active, Selected)
-            end)
-        end
-    end, function()
     end)
 end)
 

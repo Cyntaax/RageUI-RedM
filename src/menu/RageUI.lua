@@ -4,7 +4,7 @@
 --- DateTime: 21/04/2019 21:20
 ---
 
-print("^1RageUI-RedM Edition | https://github.com/iTexZoz/RageUI-RedM - OpenSource Advanced UI Api^0")
+print("^1RageUI-RedM Edition - https://github.com/iTexZoz/RageUI-RedM - OpenSource Advanced UI Api^0")
 
 ---round
 ---@param num number
@@ -149,12 +149,12 @@ RageUI.Settings = {
             Active = false,
             Pressed = false,
             Keys = {
-                { 0, 177 },
-                { 1, 177 },
-                { 2, 177 },
-                { 0, 199 },
-                { 1, 199 },
-                { 2, 199 },
+                { 0, 0x156F7119 },
+                { 1, 0x156F7119 },
+                { 2, 0x156F7119 },
+                { 0, 0x156F7119 },
+                { 1, 0x156F7119 },
+                { 2, 0x156F7119 },
             },
         },
         Click = {
@@ -271,7 +271,7 @@ RageUI.Settings = {
             Text = { X = 8, Y = 3, Scale = 0.35 },
             PreText = { X = 425, Y = 3, Scale = 0.35 },
         },
-        Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 0, Width = 431 },
+        Background = { Dictionary = "menu_textures", Texture = "translate_bg_1a", Y = 0, Width = 431 },
         Navigation = {
             Rectangle = { Width = 431, Height = 18 },
             Offset = 5,
@@ -318,12 +318,11 @@ function RageUI.Visible(Menu, Value)
             if type(Value) == "boolean" then
                 if Value then
                     if RageUI.CurrentMenu ~= nil then
-			if RageUI.CurrentMenu.Closed ~= nil then
+                        if RageUI.CurrentMenu.Closed ~= nil then
                             RageUI.CurrentMenu.Closed()
                         end
                         RageUI.CurrentMenu.Open = not Value
                     end
-                    Menu:UpdateInstructionalButtons(Value);
                     Menu:UpdateCursorStyle();
                     RageUI.CurrentMenu = Menu
                     menuOpen = true
@@ -465,7 +464,7 @@ function RageUI.Render(instructionalButton)
     if RageUI.CurrentMenu ~= nil then
         if RageUI.CurrentMenu() then
             if RageUI.CurrentMenu.Safezone then
-                ResetScriptGfxAlign()
+                --ResetScriptGfxAlign()
             end
             RageUI.CurrentMenu.Options = RageUI.Options
             RageUI.CurrentMenu.SafeZoneSize = nil
@@ -565,8 +564,7 @@ function RageUI.ItemsSafeZone(CurrentMenu)
         CurrentMenu.SafeZoneSize = { X = 0, Y = 0 }
         if CurrentMenu.Safezone then
             CurrentMenu.SafeZoneSize = RageUI.GetSafeZoneBounds()
-            SetScriptGfxAlign(76, 84)
-            SetScriptGfxAlignParams(0, 0, 0, 0)
+            -- TODO FIX IT
         end
     end
 end
@@ -611,7 +609,6 @@ function RageUI.IsVisible(menu, header, glare, instructional, items, panels)
     end
 end
 
-
 ---CreateWhile
 ---@param wait number
 ---@param menu table
@@ -626,6 +623,7 @@ function RageUI.CreateWhile(wait, menu, key, closure)
 
             if (key ~= nil) then
                 if IsControlJustPressed(1, key) then
+                    print('Yeat')
                     RageUI.Visible(menu, not RageUI.Visible(menu))
                 end
             end
