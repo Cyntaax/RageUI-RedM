@@ -517,9 +517,6 @@ function RageUI.Render(instructionalButton)
             if RageUI.CurrentMenu.Safezone then
                 ResetScriptGfxAlign()
             end
-            if (instructionalButton) then
-                DrawScaleformMovieFullscreen(RageUI.CurrentMenu.InstructionalScaleform, 255, 255, 255, 255, 0)
-            end
             RageUI.CurrentMenu.Options = RageUI.Options
             RageUI.CurrentMenu.SafeZoneSize = nil
             RageUI.Controls()

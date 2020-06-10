@@ -42,7 +42,6 @@ function RageUI.CreateMenu(Title, Subtitle, X, Y, TextureDictionary, TextureName
     Menu.EnableMouse = false
     Menu.Options = 0
     Menu.Closable = true
-    Menu.InstructionalScaleform = RequestScaleformMovie("INSTRUCTIONAL_BUTTONS")
     Menu.CursorStyle = 1
 
     if string.starts(Menu.Subtitle, "~") then
@@ -61,14 +60,6 @@ function RageUI.CreateMenu(Title, Subtitle, X, Y, TextureDictionary, TextureName
         end
     end
 
-    Citizen.CreateThread(function()
-        if not HasScaleformMovieLoaded(Menu.InstructionalScaleform) then
-            Menu.InstructionalScaleform = RequestScaleformMovie("INSTRUCTIONAL_BUTTONS")
-            while not HasScaleformMovieLoaded(Menu.InstructionalScaleform) do
-                Citizen.Wait(0)
-            end
-        end
-    end)
 
     return setmetatable(Menu, RageUI.Menus)
 end
@@ -112,7 +103,6 @@ function RageUI.CreateSubMenu(ParentMenu, Title, Subtitle, X, Y, TextureDictiona
             Menu.EnableMouse = false
             Menu.Options = 0
             Menu.Closable = true
-            Menu.InstructionalScaleform = RequestScaleformMovie("INSTRUCTIONAL_BUTTONS")
             Menu.CursorStyle = 1
 
             if string.starts(Menu.Subtitle, "~") then
@@ -304,82 +294,4 @@ function RageUI.Menus:Closable(boolean)
     else
         error("Type is not boolean")
     end
-end
-
-function RageUI.Menus:AddInstructionButton(button)
-    if type(button) == "table" and #button == 2 then
-        table.insert(self.InstructionalButtons, button)
-        self.UpdateInstructionalButtons(true);
-    end
-end
-
-function RageUI.Menus:RemoveInstructionButton(button)
-    if type(button) == "table" then
-        for i = 1, #self.InstructionalButtons do
-            if button == self.InstructionalButtons[i] then
-                table.remove(self.InstructionalButtons, i)
-                self.UpdateInstructionalButtons(true);
-                break
-            end
-        end
-    else
-        if tonumber(button) then
-            if self.InstructionalButtons[tonumber(button)] then
-                table.remove(self.InstructionalButtons, tonumber(button))
-                self.UpdateInstructionalButtons(true);
-            end
-        end
-    end
-end
-
-function RageUI.Menus:UpdateInstructionalButtons(Visible)
-
-    if not Visible then
-        return
-    end
-
-    BeginScaleformMovieMethod(self.InstructionalScaleform, "CLEAR_ALL")
-    EndScaleformMovieMethod()
-
-    BeginScaleformMovieMethod(self.InstructionalScaleform, "TOGGLE_MOUSE_BUTTONS")
-    ScaleformMovieMethodAddParamInt(0)
-    EndScaleformMovieMethod()
-
-    BeginScaleformMovieMethod(self.InstructionalScaleform, "CREATE_CONTAINER")
-    EndScaleformMovieMethod()
-
-    BeginScaleformMovieMethod(self.InstructionalScaleform, "SET_DATA_SLOT")
-    ScaleformMovieMethodAddParamInt(0)
-    PushScaleformMovieMethodParameterButtonName(GetControlInstructionalButton(2, 176, 0))
-    PushScaleformMovieMethodParameterString(GetLabelText("HUD_INPUT2"))
-    EndScaleformMovieMethod()
-
-    if self.Closable then
-        BeginScaleformMovieMethod(self.InstructionalScaleform, "SET_DATA_SLOT")
-        ScaleformMovieMethodAddParamInt(1)
-        PushScaleformMovieMethodParameterButtonName(GetControlInstructionalButton(2, 177, 0))
-        PushScaleformMovieMethodParameterString(GetLabelText("HUD_INPUT3"))
-        EndScaleformMovieMethod()
-    end
-
-    local count = 2
-
-    if (self.InstructionalButtons ~= nil) then
-        for i = 1, #self.InstructionalButtons do
-            if self.InstructionalButtons[i] then
-                if #self.InstructionalButtons[i] == 2 then
-                    BeginScaleformMovieMethod(self.InstructionalScaleform, "SET_DATA_SLOT")
-                    ScaleformMovieMethodAddParamInt(count)
-                    PushScaleformMovieMethodParameterButtonName(self.InstructionalButtons[i][1])
-                    PushScaleformMovieMethodParameterString(self.InstructionalButtons[i][2])
-                    EndScaleformMovieMethod()
-                    count = count + 1
-                end
-            end
-        end
-    end
-
-    BeginScaleformMovieMethod(self.InstructionalScaleform, "DRAW_INSTRUCTIONAL_BUTTONS")
-    ScaleformMovieMethodAddParamInt(-1)
-    EndScaleformMovieMethod()
 end
