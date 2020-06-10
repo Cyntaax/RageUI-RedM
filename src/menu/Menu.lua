@@ -145,7 +145,7 @@ function RageUI.Menus:SetTitle(Title)
 end
 
 ---SetStyleSize
----@param Value int
+---@param Value number
 ---@return nil
 ---@public
 function RageUI.Menus:SetStyleSize(Value)
