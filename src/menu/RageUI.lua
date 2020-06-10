@@ -279,7 +279,7 @@ RageUI.Settings = {
         },
         Description = {
             Bar = { Y = 4, Width = 431, Height = 4 },
-            Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 30 },
+            Background = { Dictionary = "generic_textures", Texture = "help_text_1a", Y = 4, Width = 431, Height = 30 },
             Text = { X = 8, Y = 10, Scale = 0.35 },
         },
     },
@@ -359,30 +359,24 @@ function RageUI.CloseAll()
     end
     RageUI.Options = 0
     RageUI.ItemOffset = 0
-    ResetScriptGfxAlign()
+    --ResetScriptGfxAlign()
 end
 
 ---Banner
 ---@return nil
 ---@public
 ---@param Enabled boolean
-function RageUI.Banner(Enabled, Glare)
+function RageUI.Banner(Enabled)
     if type(Enabled) == "boolean" then
         if Enabled == true then
-
-
             if RageUI.CurrentMenu ~= nil then
                 if RageUI.CurrentMenu() then
-
-
                     RageUI.ItemsSafeZone(RageUI.CurrentMenu)
-
                     if RageUI.CurrentMenu.Sprite then
                         RenderSprite(RageUI.CurrentMenu.Sprite.Dictionary, RageUI.CurrentMenu.Sprite.Texture, RageUI.CurrentMenu.X, RageUI.CurrentMenu.Y, RageUI.Settings.Items.Title.Background.Width + RageUI.CurrentMenu.WidthOffset, RageUI.Settings.Items.Title.Background.Height, nil)
                     else
                         RenderRectangle(RageUI.CurrentMenu.X, RageUI.CurrentMenu.Y, RageUI.Settings.Items.Title.Background.Width + RageUI.CurrentMenu.WidthOffset, RageUI.Settings.Items.Title.Background.Height, RageUI.CurrentMenu.Rectangle.R, RageUI.CurrentMenu.Rectangle.G, RageUI.CurrentMenu.Rectangle.B, RageUI.CurrentMenu.Rectangle.A)
                     end
-
                     RenderText(RageUI.CurrentMenu.Title, RageUI.CurrentMenu.X + RageUI.Settings.Items.Title.Text.X + (RageUI.CurrentMenu.WidthOffset / 2), RageUI.CurrentMenu.Y + RageUI.Settings.Items.Title.Text.Y, 1, RageUI.Settings.Items.Title.Text.Scale, 255, 255, 255, 255, 1)
                     RageUI.ItemOffset = RageUI.ItemOffset + RageUI.Settings.Items.Title.Background.Height
                 end
@@ -392,15 +386,6 @@ function RageUI.Banner(Enabled, Glare)
         error("Enabled is not boolean")
     end
 end
-
----CloseAll -- TODO 
----@return nil
----@public
--- function RageUI:CloseAll()
---     RageUI.PlaySound(RageUI.Settings.Audio.Library, RageUI.Settings.Audio.Back)
---     RageUI.NextMenu = nil
---     RageUI.Visible(RageUI.CurrentMenu, false)
--- end
 
 ---Subtitle
 ---@return nil
@@ -448,8 +433,8 @@ function RageUI.Description()
     if RageUI.CurrentMenu ~= nil and RageUI.CurrentMenu.Description ~= nil then
         if RageUI.CurrentMenu() then
             RageUI.ItemsSafeZone(RageUI.CurrentMenu)
-            RenderRectangle(RageUI.CurrentMenu.X, RageUI.CurrentMenu.Y + RageUI.Settings.Items.Description.Bar.Y + RageUI.CurrentMenu.SubtitleHeight + RageUI.ItemOffset, RageUI.Settings.Items.Description.Bar.Width + RageUI.CurrentMenu.WidthOffset, RageUI.Settings.Items.Description.Bar.Height, 0, 0, 0, 255)
-            RenderSprite(RageUI.Settings.Items.Description.Background.Dictionary, RageUI.Settings.Items.Description.Background.Texture, RageUI.CurrentMenu.X, RageUI.CurrentMenu.Y + RageUI.Settings.Items.Description.Background.Y + RageUI.CurrentMenu.SubtitleHeight + RageUI.ItemOffset, RageUI.Settings.Items.Description.Background.Width + RageUI.CurrentMenu.WidthOffset, RageUI.CurrentMenu.DescriptionHeight, 0, 0, 0, 255)
+            RenderSprite(RageUI.Settings.Items.Description.Background.Dictionary, RageUI.Settings.Items.Description.Background.Texture, RageUI.CurrentMenu.X, RageUI.CurrentMenu.Y + RageUI.Settings.Items.Description.Background.Y + RageUI.CurrentMenu.SubtitleHeight + RageUI.ItemOffset, RageUI.Settings.Items.Description.Background.Width + RageUI.CurrentMenu.WidthOffset, RageUI.CurrentMenu.DescriptionHeight, 0, 0, 0, 0, 255)
+
             RenderText(RageUI.CurrentMenu.Description, RageUI.CurrentMenu.X + RageUI.Settings.Items.Description.Text.X, RageUI.CurrentMenu.Y + RageUI.Settings.Items.Description.Text.Y + RageUI.CurrentMenu.SubtitleHeight + RageUI.ItemOffset, 0, RageUI.Settings.Items.Description.Text.Scale, 255, 255, 255, 255, nil, false, false, RageUI.Settings.Items.Description.Background.Width + RageUI.CurrentMenu.WidthOffset - 8.0)
             RageUI.ItemOffset = RageUI.ItemOffset + RageUI.CurrentMenu.DescriptionHeight + RageUI.Settings.Items.Description.Bar.Y
         end
