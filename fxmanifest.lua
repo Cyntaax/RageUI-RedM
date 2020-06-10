@@ -1,8 +1,7 @@
 fx_version 'adamant'
-games { 'gta5' };
+games { 'rdr3' };
 
 name 'RageUI';
-description 'RageUI, and a project specially created to replace the NativeUILua-Reloaded library. This library allows to create menus similar to the one of Grand Theft Auto online.'
 
 client_scripts {
     "src/client/RMenu.lua",
@@ -23,7 +22,7 @@ client_scripts {
 }
 
 client_scripts {
-     --'tests/rmenu/basic.lua',
+     'tests/*.lua',
 }
 
-
+rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
