@@ -73,12 +73,9 @@ RageUI.Settings = {
             Active = false,
             Pressed = false,
             Keys = {
-                { 0, 172 },
-                { 1, 172 },
-                { 2, 172 },
-                { 0, 241 },
-                { 1, 241 },
-                { 2, 241 },
+                { 0, 0x6319DB71 },
+                { 0, 0x8CFFE0A1 },
+                { 0, 0x911CB09E }
             },
         },
         Down = {
@@ -86,12 +83,9 @@ RageUI.Settings = {
             Active = false,
             Pressed = false,
             Keys = {
-                { 0, 173 },
-                { 1, 173 },
-                { 2, 173 },
-                { 0, 242 },
-                { 1, 242 },
-                { 2, 242 },
+                { 0, 0x05CA7C52 },
+                { 0, 0x4403F97F },
+                { 0, 0x78114AB3 }
             },
         },
         Left = {
@@ -99,9 +93,10 @@ RageUI.Settings = {
             Active = false,
             Pressed = false,
             Keys = {
-                { 0, 174 },
-                { 1, 174 },
-                { 2, 174 },
+                { 0, 0x20190AB4 },
+                { 0, 0x877F1027 },
+                { 0, 0xA65EBAB4 },
+                { 0, 0xAD7FCC5B },
             },
         },
         Right = {
@@ -109,9 +104,10 @@ RageUI.Settings = {
             Pressed = false,
             Active = false,
             Keys = {
-                { 0, 175 },
-                { 1, 175 },
-                { 2, 175 },
+                { 0, 0x08BD758C },
+                { 0, 0x65F9EC5B },
+                { 0, 0xC97792B7 },
+                { 0, 0xDEB34313 }
             },
         },
         SliderLeft = {
@@ -119,9 +115,8 @@ RageUI.Settings = {
             Active = false,
             Pressed = false,
             Keys = {
-                { 0, 174 },
-                { 1, 174 },
-                { 2, 174 },
+                { 0, 0x3abbe990 },
+
             },
         },
         SliderRight = {
@@ -129,9 +124,7 @@ RageUI.Settings = {
             Pressed = false,
             Active = false,
             Keys = {
-                { 0, 175 },
-                { 1, 175 },
-                { 2, 175 },
+                { 0, 0xd25efdcd },
             },
         },
         Select = {
@@ -139,9 +132,7 @@ RageUI.Settings = {
             Pressed = false,
             Active = false,
             Keys = {
-                { 0, 201 },
-                { 1, 201 },
-                { 2, 201 },
+                { 0, 0xc7b5340a },
             },
         },
         Back = {
@@ -150,11 +141,7 @@ RageUI.Settings = {
             Pressed = false,
             Keys = {
                 { 0, 0x156F7119 },
-                { 1, 0x156F7119 },
-                { 2, 0x156F7119 },
                 { 0, 0x156F7119 },
-                { 1, 0x156F7119 },
-                { 2, 0x156F7119 },
             },
         },
         Click = {
@@ -162,44 +149,44 @@ RageUI.Settings = {
             Active = false,
             Pressed = false,
             Keys = {
-                { 0, 24 },
+                { 0, 0x07ce1e61 },
             },
         },
         Enabled = {
             Controller = {
-                { 0, 2 }, -- Look Up and Down
-                { 0, 1 }, -- Look Left and Right
-                { 0, 25 }, -- Aim
-                { 0, 24 }, -- Attack
+                { 0, 0xd2047988 }, -- Look Up and Down
+                { 0, 0xa987235f }, -- Look Left and Right
+                { 0, 0xf84fa74f }, -- Aim
+                { 0, 0x07ce1e61 }, -- Attack
             },
             Keyboard = {
-                { 0, 201 }, -- Select
-                { 0, 195 }, -- X axis
-                { 0, 196 }, -- Y axis
-                { 0, 187 }, -- Down
-                { 0, 188 }, -- Up
-                { 0, 189 }, -- Left
-                { 0, 190 }, -- Right
-                { 0, 202 }, -- Back
-                { 0, 217 }, -- Select
-                { 0, 242 }, -- Scroll down
-                { 0, 241 }, -- Scroll up
-                { 0, 239 }, -- Cursor X
-                { 0, 240 }, -- Cursor Y
-                { 0, 31 }, -- Move Up and Down
-                { 0, 30 }, -- Move Left and Right
-                { 0, 21 }, -- Sprint
-                { 0, 22 }, -- Jump
-                { 0, 23 }, -- Enter
-                { 0, 75 }, -- Exit Vehicle
-                { 0, 71 }, -- Accelerate Vehicle
-                { 0, 72 }, -- Vehicle Brake
-                { 0, 59 }, -- Move Vehicle Left and Right
-                { 0, 89 }, -- Fly Yaw Left
-                { 0, 9 }, -- Fly Left and Right
-                { 0, 8 }, -- Fly Up and Down
-                { 0, 90 }, -- Fly Yaw Right
-                { 0, 76 }, -- Vehicle Handbrake
+                { 0, 0xc7b5340a }, -- Select
+                { 0, 0xfb56dd5b }, -- X axis
+                { 0, 0x091178d0 }, -- Y axis
+                { 0, 0x05ca7c52 }, -- Down
+                { 0, 0x6319db71 }, -- Up
+                { 0, 0xa65ebab4 }, -- Left
+                { 0, 0xdeb34313 }, -- Right
+                { 0, 0x156F7119 }, -- Back
+                { 0, 0x171910dc }, -- Select
+                { 0, 0x8bde7443 }, -- Scroll down
+                { 0, 0x62800c92 }, -- Scroll up
+                { 0, 0xd6c4ecdc }, -- Cursor X
+                { 0, 0xe4130778 }, -- Cursor Y
+                { 0, 0xfda83190 }, -- Move Up and Down
+                { 0, 0x4d8fb4c1 }, -- Move Left and Right
+                { 0, 0x8ffc75d6 }, -- Sprint
+                { 0, 0xd9d0e1c0 }, -- Jump
+                { 0, 0xcefd9220 }, -- Enter
+                { 0, 0xfefab9b4 }, -- Exit Vehicle
+                { 0, 0x5b9fd4e2 }, -- Accelerate Vehicle
+                { 0, 0x6e1f639b }, -- Vehicle Brake
+                { 0, 0xf1e2852c }, -- Move Vehicle Left and Right
+                { 0, 0x31589ad1 }, -- Fly Yaw Left
+                { 0, 0xf1111e4a }, -- Fly Left and Right
+                { 0, 0xaeb4b1de }, -- Fly Up and Down
+                { 0, 0xbd143fc6 }, -- Fly Yaw Right
+                { 0, 0x65d24c98 }, -- Vehicle Handbrake
             },
         },
     },

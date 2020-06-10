@@ -1,7 +1,7 @@
 local Grid = {
-    Background = { Dictionary = "commonmenu", Texture = "gradient_bgd", Y = 4, Width = 431, Height = 275 },
-    Grid = { Dictionary = "pause_menu_pages_char_mom_dad", Texture = "nose_grid", X = 115.5, Y = 47.5, Width = 200, Height = 200 },
-    Circle = { Dictionary = "mpinventory", Texture = "in_world_circle", X = 115.5, Y = 47.5, Width = 20, Height = 20 },
+    Background = { Dictionary = "menu_textures", Texture = "translate_bg_1a", Y = 4, Width = 431, Height = 275 },
+    Grid = { Dictionary = "generic_textures", Texture = "grid_1a", X = 115.5, Y = 47.5, Width = 200, Height = 200 },
+    Circle = { Dictionary = "generic_textures", Texture = "counter_bg_1a", X = 115.5, Y = 47.5, Width = 20, Height = 20 },
     Text = {
         Top = { X = 215.5, Y = 15, Scale = 0.35 },
         Bottom = { X = 215.5, Y = 250, Scale = 0.35 },
