@@ -1,19 +1,4 @@
----MeasureStringWidth
----
---- Reference : Frazzle <3
----
----@param str string
----@param font number
----@param scale number
----@return _G
----@public
-local function MeasureStringWidth(str, font, scale)
-    BeginTextCommandWidth("CELL_EMAIL_BCON")
-    AddTextComponentSubstringPlayerName(str)
-    SetTextFont(font or 0)
-    SetTextScale(1.0, scale or 0)
-    return EndTextCommandGetWidth(true) * 1920
-end
+
 
 ---GetCharacterCount
 ---
